@@ -1,7 +1,6 @@
 import { readdir, mkdir, copyFile } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import * as fs from 'node:fs';
+import { join } from 'node:path';
+import { exists, getDirname } from '../additions/additions.js';
 
 const copyDirectory = async (src, destination) => {
   const items = await readdir(src, { withFileTypes: true });
@@ -32,26 +31,6 @@ export const copy = async () => {
     process.stderr.write(error.message);
     process.exit(1);
   }
-};
-
-const exists = (path) => {
-  return new Promise((resolve) => {
-    fs.access(path, fs.constants.F_OK, (error) => {
-      if (!error) {
-        resolve(true);
-      } else {
-        resolve(false);
-      }
-    });
-  });
-};
-
-const getDirname = async (url) => {
-  return new Promise((resolve) => {
-    const __filename = fileURLToPath(url);
-    const __dirname = dirname(__filename);
-    resolve(__dirname);
-  });
 };
 
 copy();

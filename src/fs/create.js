@@ -1,7 +1,7 @@
 import { writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import * as fs from 'node:fs';
+import { exists } from '../additions/additions.js';
 
 export const create = async () => {
   const __filename = fileURLToPath(import.meta.url);
@@ -18,18 +18,6 @@ export const create = async () => {
     process.stderr.write(error.message);
     process.exit(1);
   }
-};
-
-const exists = (path) => {
-  return new Promise((resolve) => {
-    fs.access(path, fs.constants.F_OK, (error) => {
-      if (!error) {
-        resolve(true);
-      } else {
-        resolve(false);
-      }
-    });
-  });
 };
 
 create();
