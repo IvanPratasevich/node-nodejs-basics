@@ -3,10 +3,10 @@ import * as fs from 'node:fs/promises';
 import { exists, getDirname } from '../additions/additions.js';
 
 export const rename = async () => {
-  const __dirname = await getDirname(import.meta.url);
-  const pathToSourceFile = join(__dirname, 'files', 'wrongFilename.txt');
-  const pathToDestinationFile = join(__dirname, 'files', 'properFilename.md');
   try {
+    const __dirname = await getDirname(import.meta.url);
+    const pathToSourceFile = join(__dirname, 'files', 'wrongFilename.txt');
+    const pathToDestinationFile = join(__dirname, 'files', 'properFilename.md');
     const isSourceFileExists = await exists(pathToSourceFile);
     const isDestinationFileExists = await exists(pathToDestinationFile);
     if (!isSourceFileExists || isDestinationFileExists) {
