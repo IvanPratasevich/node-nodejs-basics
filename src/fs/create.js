@@ -1,11 +1,9 @@
 import { writeFile } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { exists } from '../additions/additions.js';
+import { join } from 'node:path';
+import { exists, getDirname } from '../additions/additions.js';
 
 export const create = async () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
+  const __dirname = await getDirname(import.meta.url);
   const text = 'I am fresh and young';
   const pathToFile = join(__dirname, 'files', 'fresh.txt');
   try {
