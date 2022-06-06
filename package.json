@@ -11,7 +11,6 @@
     "fs:delete": "node src/fs/delete.js",
     "fs:list": "node src/fs/list.js",
     "fs:read": "node src/fs/read.js",
-    "cli:args": "node src/cli/args.js",
     "modules": "node src/modules/cjsToEsm.mjs",
     "hash": "node src/hash/calcHash.js",
     "streams:read": "node src/streams/read.js",
